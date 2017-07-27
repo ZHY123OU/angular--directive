@@ -1,0 +1,27 @@
+<div class='wrapperPaging'>
+	<button ng-class='{"butCancel": clickButStyle.isFirstBut == 0}' ng-click='selBut(1)'>首页</button>
+	<button ng-class='{"butCancel": clickButStyle.isFirstBut == 0}' ng-click='selBut("-1")'>上一页</button>
+	
+	<div class='wrapperPagingBut' ng-if='butStyle.normBut'>
+		<span ng-class='{"butCancel": clickButStyle.isButClick == but}' ng-click='selBut(but)' ng-repeat='(index, but) in butNums'>{{but}}</span>	
+	</div>
+	<!-- 1 - 4 / 2 - 3-->
+	<div class='wrapperPagingBut' ng-if='butStyle.butOne'>
+		<span ng-class='{"butCancel": clickButStyle.isButClick == but}' ng-click='selBut(but)' ng-repeat='(index, but) in butLeft'>{{but}}</span>
+		<span>...</span>
+		<span ng-class='{"butCancel": clickButStyle.isButClick == but}' ng-click='selBut(but)' ng-repeat='(index, but) in butRight'>{{but}}</span>
+	</div>
+	<!-- 1 - 3 - 1 -->
+	<div class='wrapperPagingBut' ng-if='butStyle.butTwo'>
+		<span ng-class='{"butCancel": clickButStyle.isButClick == but}' ng-click='selBut(but)' ng-repeat='(index, but) in butLeft'>{{but}}</span>
+		<span>...</span>
+		<span ng-click='selBut(nowPage-1)'>{{nowPage-1}}</span>
+		<span class="butCancel" ng-click='selBut(nowPage)'>{{nowPage}}</span>
+		<span ng-click='selBut(nowPage+1)'>{{nowPage+1}}</span>
+		<span>...</span>
+		<span ng-class='{"butCancel": clickButStyle.isButClick == but}' ng-click='selBut(but)' ng-repeat='(index, but) in butRight'>{{but}}</span>	
+	</div>	
+
+	<button ng-class='{"butCancel": clickButStyle.isFirstBut == butNums.length - 1}' class='nextBut' ng-click='selBut("+1")'>下一页</button>
+	<button ng-class='{"butCancel": clickButStyle.isFirstBut == butNums.length - 1}' ng-click='selBut(butNums.length)'>尾页</button>
+</div>
